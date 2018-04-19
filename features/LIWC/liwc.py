@@ -1,11 +1,13 @@
 import json
 import numpy as np
+import os
 from nltk import FreqDist as freq
 from ..helperScripts.utils import Utilities
 
 class liwc_score():
     def __init__(self):
-        with open('liwc.json', 'r') as f:
+        path = os.path.dirname(os.path.abspath(__file__))
+        with open(path + '/liwc.json', 'r') as f:
             self.liwc = json.load(f)
 
     def get_liwc_score(self, inp_sentence):
@@ -22,38 +24,3 @@ class liwc_score():
                 pass
 
         return liwc_vec/count
-
-if __name__ == "__main__":
-    with open('test', 'r') as f:
-        inp_data = f.read()
-
-    l = liwc_score()
-    print(l.get_liwc_score(inp_data))
-
-
-"""with open('liwc.cat', 'r') as f:
-    liwc_cat = f.read().splitlines()
-
-liwc_json = {}
-for i in range(1, 65):
-    print i
-    with open('dictionary/{}.csv'.format(i), 'r') as f:
-        words = f.read().splitlines()
-        for word in words:
-            #print word
-            #word = word.encode('utf-8')
-            try :
-                liwc_json[word][i-1] += 1
-            except KeyError:
-                liwc_json[word] = [0]*64
-                liwc_json[word][i-1] = 1
-
-print liwc_json
-with open('liwc.json', 'w') as f:
-    json.dump(liwc_json, f)"""
-
-
-
-
-
-
