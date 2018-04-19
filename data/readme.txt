@@ -18,7 +18,6 @@ Properties of the file:
 Relevant fields:
 subreddit_id
 selftext
-likes
 id
 author
 score
