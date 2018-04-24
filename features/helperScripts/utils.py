@@ -12,6 +12,7 @@ class Utilities:
 
     def tokenize(sentence, remove_stop=False):
         token_list = Utilities.tokenizer.tokenize(sentence)
+        token_list = [word.lower() for word in token_list]
         if remove_stop :
             token_list = [word for word in token_list if word not in Utilities.stop_words]
 
@@ -22,5 +23,3 @@ class Utilities:
 
     def tokenize_lemmatize(sentence, remove_stop=False):
         return [Utilities.lemmatizer.lemmatize(word) for word in Utilities.tokenize(sentence, remove_stop)]
-
-# Sentic wordnet suraj maharajan.
